@@ -3,6 +3,7 @@
 typedef void Canvas;
 
 #define FONT_WIDTH 6
+#define FONT_HEIGHT 10
 
 #define ELEMENTS_MAX_LINES_NUM (7)
 #define ELEMENTS_BOLD_MARKER '#'
@@ -88,4 +89,26 @@ void canvas_draw_glyph(Canvas* canvas, uint8_t x, uint8_t y, uint16_t ch) {
 
 void canvas_draw_str(Canvas* canvas, uint8_t x, uint8_t y, const char* str) {
     printf("canvas_draw_str(%hhu, %hhu, \"%s\")\n", x, y, str);
+}
+
+uint8_t canvas_height(const Canvas* canvas) {
+    return 64;
+}
+
+uint8_t canvas_width(const Canvas* canvas) {
+    return 128;
+}
+
+uint8_t canvas_current_font_height(const Canvas* canvas) {
+    return FONT_HEIGHT;
+}
+
+void canvas_draw_str_aligned(
+    Canvas* canvas,
+    uint8_t x,
+    uint8_t y,
+    Align horizontal,
+    Align vertical,
+    const char* str) {
+    printf("canvas_draw_str_aligned(%hhu, %hhu, %d, %d, \"%s\")\n", x, y, horizontal, vertical, str);
 }
