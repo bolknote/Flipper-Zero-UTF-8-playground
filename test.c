@@ -94,6 +94,6 @@ int main() {
 
     // elements_text_box
     printf("\nelements_text_box\n");
-    elements_text_box(canvas, 0, 20, 100, 40, AlignLeft, AlignTop, "ABCDEABCDEabcdea", false);
-    elements_text_box(canvas, 0, 20, 100, 40, AlignLeft, AlignTop, "АБВГДАБВГДабвгда", false);
+    elements_text_box(canvas, 0, 20, 100, 40, AlignLeft, AlignTop, "ABCDEABCDEabcdea!", false);
+    // elements_text_box(canvas, 0, 20, 100, 40, AlignLeft, AlignTop, "АБВГДАБВГДабвгда!", false);
 }

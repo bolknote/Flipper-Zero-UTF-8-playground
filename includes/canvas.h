@@ -64,6 +64,21 @@ const CanvasFontParameters canvas_font_params[FontTotalNumber] = {
     [FontBigNumbers] = {.leading_default = 18, .leading_min = 16, .height = 15, .descender = 0},
 };
 
+char* uint16_to_char(uint16_t symbol) {
+    char* result = calloc(3, sizeof(char));
+    if (symbol == 0) {
+        result[0] = '\\';
+        result[1] = '0';
+    } else if (symbol < 0x80) {
+        result[0] = symbol;
+    } else {
+        result[0] = 0xC0 | (symbol >> 6);
+        result[1] = 0x80 | (symbol & 0x3F);
+    }
+
+    return result;
+}
+
 const CanvasFontParameters* canvas_get_font_params(const Canvas* canvas, Font font) {
     return &canvas_font_params[font];
 }
@@ -79,12 +94,16 @@ void canvas_draw_box(Canvas* canvas, uint8_t x, uint8_t y, uint8_t width, uint8_
 }
 
 uint8_t canvas_glyph_width(Canvas* canvas, uint16_t symbol) {
-    printf("canvas_glyph_width(%hu)\n", symbol);
+    char* str = uint16_to_char(symbol);
+    printf("canvas_glyph_width('%s')\n", str);
+    free(str);
     return FONT_WIDTH;
 }
 
 void canvas_draw_glyph(Canvas* canvas, uint8_t x, uint8_t y, uint16_t ch) {
-    printf("canvas_draw_glyph(%hhu, %hhu, %hu)\n", x, y, ch);
+    char* str = uint16_to_char(ch);
+    printf("canvas_draw_glyph(%hhu, %hhu, '%s')\n", x, y, str);
+    free(str);
 }
 
 void canvas_draw_str(Canvas* canvas, uint8_t x, uint8_t y, const char* str) {
