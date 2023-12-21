@@ -31,8 +31,7 @@ void elements_scrollable_text_line(
             do {
                 furi_string_utf8_decode(furi_string_get_char(line, offset), &state, &value);
                 offset++;
-            } while (state != FuriStringUTF8StateStarting);
-
+            } while(state != FuriStringUTF8StateStarting);
 
             right_width += canvas_glyph_width(canvas, value);
             if(right_width > width) break;
@@ -46,7 +45,7 @@ void elements_scrollable_text_line(
             scroll = scroll % scroll_size;
 
             size_t offset = 0;
-            for (; scroll > 0; offset++) {
+            for(; scroll > 0; offset++) {
                 if((furi_string_get_char(line, offset) & 0xC0) != 0x80) {
                     scroll--;
                 }

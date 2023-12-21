@@ -18,14 +18,12 @@
 #define furi_assert(...) \
     M_APPLY(__furi_assert, M_DEFAULT_ARGS(2, (__FURI_ASSERT_MESSAGE_FLAG), __VA_ARGS__))
 
-
 #define MAX(a, b)               \
     ({                          \
         __typeof__(a) _a = (a); \
         __typeof__(b) _b = (b); \
         _a > _b ? _a : _b;      \
     })
-
 
 void furi_crash() {
     abort();
@@ -90,7 +88,6 @@ int main() {
 
     cstr = "АБВГДАБВГДабвгдабвгдАБВГДАБВГДабвгдабвгд";
     elements_multiline_text_aligned(canvas, 0, 20, AlignLeft, AlignCenter, cstr);
-
 
     // elements_text_box
     printf("\nelements_text_box\n");

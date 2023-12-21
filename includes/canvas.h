@@ -10,7 +10,6 @@ typedef void Canvas;
 #define ELEMENTS_MONO_MARKER '*'
 #define ELEMENTS_INVERSED_MARKER '!'
 
-
 /** Alignment enumeration */
 typedef enum {
     AlignLeft,
@@ -66,10 +65,10 @@ const CanvasFontParameters canvas_font_params[FontTotalNumber] = {
 
 char* uint16_to_char(uint16_t symbol) {
     char* result = calloc(3, sizeof(char));
-    if (symbol == 0) {
+    if(symbol == 0) {
         result[0] = '\\';
         result[1] = '0';
-    } else if (symbol < 0x80) {
+    } else if(symbol < 0x80) {
         result[0] = symbol;
     } else {
         result[0] = 0xC0 | (symbol >> 6);
@@ -129,5 +128,6 @@ void canvas_draw_str_aligned(
     Align horizontal,
     Align vertical,
     const char* str) {
-    printf("canvas_draw_str_aligned(%hhu, %hhu, %d, %d, \"%s\")\n", x, y, horizontal, vertical, str);
+    printf(
+        "canvas_draw_str_aligned(%hhu, %hhu, %d, %d, \"%s\")\n", x, y, horizontal, vertical, str);
 }
