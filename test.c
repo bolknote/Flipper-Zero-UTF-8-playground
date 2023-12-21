@@ -37,6 +37,10 @@ void furi_crash() {
 
 /////// Place for tests /////////
 
+void print_title(const char* title) {
+    printf("\n\033[1mFunction: %s\033[0m\n", title);
+}
+
 int main() {
     Canvas* canvas = NULL;
     FuriString* str;
@@ -44,7 +48,7 @@ int main() {
     char* cstr;
 
     // elements_string_fit_width
-    printf("elements_string_fit_width\n");
+    print_title("elements_string_fit_width");
 
     str = furi_string_alloc_set("RRRRRRRRRRRRRRRRRRRR");
     elements_string_fit_width(canvas, str, 70);
@@ -70,7 +74,7 @@ int main() {
     printf("width=%d, \"%s\"\n", len, furi_string_get_cstr(str));
 
     // elements_scrollable_text_line
-    printf("\nelements_scrollable_text_line\n");
+    print_title("elements_scrollable_text_line");
 
     str = furi_string_alloc_set("ABCDEABCDEabcdeabcde");
     elements_scrollable_text_line(canvas, 0, 20, 100, str, 3, true);
@@ -81,7 +85,7 @@ int main() {
     furi_string_free(str);
 
     // elements_multiline_text_aligned
-    printf("\nelements_multiline_text_aligned\n");
+    print_title("elements_multiline_text_aligned");
 
     cstr = "ABCDEABCDEabcdeabcdeABCDEABCDEabcdeabcde";
     elements_multiline_text_aligned(canvas, 0, 20, AlignLeft, AlignCenter, cstr);
@@ -90,7 +94,7 @@ int main() {
     elements_multiline_text_aligned(canvas, 0, 20, AlignLeft, AlignCenter, cstr);
 
     // elements_text_box
-    printf("\nelements_text_box\n");
+    print_title("elements_text_box");
     elements_text_box(canvas, 0, 20, 100, 40, AlignLeft, AlignTop, "ABCDEABCDEabcdea!", false);
     // elements_text_box(canvas, 0, 20, 100, 40, AlignLeft, AlignTop, "АБВГДАБВГДабвгда!", false);
 }
